@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body onload="loader()">
+    <div class="wrapper">
+      <!---------- Логотип в Header ---------->
+      <div class="header">
+        <a href="/" class="logo">
+          <img src="<%=data_4_render.website_logo%>" alt="ParSir's Logo" />
+        </a>
+      </div>
+      <!---------- Sticky Navbar ---------->
+      <nav id="navbar">
+        <a href="/home" lang="ru">Главная</a>
+        <a href="/about" lang="ru">О Сервисе</a>
+
+        <form
+          method="post"
+          action="/logout"
+          style="float: right; border-radius: 20px; text-align: center"
+        >
+          <input id="logout" type="submit" value="Выход" />
+        </form>
+      </nav>
+
+      <div id="loader"></div>
+
+      <!---------- Основное поле ---------->
+      <div
+        style="display: none; text-align: start"
+        id="main_wrap"
+        class="load-wrapper"
+      >
+        <h1 id="title" lang="ru" style="background: deepskyblue">
+          Статистика категорий для интернет-магазина "<%=shop%>"<br />
+          <% if (category == 'all') { %>
+          <p style="font-size: medium; text-decoration: dotted; line-height: 1">
+            Выбраны все категории товаров!
+          </p>
+          <% } else { %>
+          <p style="font-size: medium; text-decoration: dotted; line-height: 1">
+            Выбранная категория товаров: "<%=category%>"
+          </p>
+          <% } %>
+        </h1>
+
+        <div class="shops">
+          <h3 lang="ru" style="border-top-width: 5px; margin: 0px">
+            Выберите формат файла для экспорта:
+          </h3>
+
+          <form
+            id="dlform"
+            onsubmit="myf()"
+            action="/download"
+            method="POST"
+            style="text-align: start"
+          >
+            <input type="radio" checked id="csv" name="format" value="CSV" />
+            <label for="csv">CSV</label><br />
+            <input type="radio" id="xml" name="format" value="XML" />
+            <label for="xml">XML</label><br />
+            <input type="radio" id="pdf" name="format" value="PDF" />
+            <label for="pdf">PDF</label><br />
+            <button id="downloadBtn" lang="ru" type="submit">
+              Экспорт в файл
+            </button>
+            <!-- <button lang="en" type="submit">Select</button> -->
+          </form>
+        </div>
+
+        <!-- Поле со статистикой про категории -->
+        <div class="parsed_data_field">
+          <% let N = it %> <% for (let i = 0; i < N; i++) { %>
+
+          <div class="category">
+            <h3>Категория №<%= i+1 %>: "<%= categories[i] %>"</h3>
+            <div class="arrow">
+              <button
+                id="btn<%= i+1 %>"
+                type="submit"
+                onclick="toggleCategory(`.category_data<%= i+1%>`, this.id)"
+              >
+                Показать
+              </button>
+            </div>
+          </div>
+          <div class="category_data<%= i+1 %>" hidden>
+            <div
+              id="grafic<%= i+1 %>"
+              style="width: 100%; display: flex; justify-content: center"
+            ></div>
+
+            <h3
+              class="min_price_product"
+              style="color: cornflowerblue; text-indent: 25pt"
+            >
+              Стоимость самого дешёвого товара этой категории (самые свежие
+              данные): <%= minArr[i] %> ₽
+            </h3>
+            <h3
+              class="max_price_product"
+              style="color: crimson; text-indent: 25pt"
+            >
+              Стоимость самого дорогого товара этой категории (самые свежие
+              данные): <%= maxArr[i] %> ₽
+            </h3>
+          </div>
+          <% } %>
+        </div>
+
+        <%- include('../partials/footer'); %>
+      </div>
+    </div>
+
+    <!-- Кнопка "Наверх" -->
+    <a id="back2Top" title="Наверх" href="#">&#10148;</a>
+
+    <!---------- JavaScript Файлы ---------->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+      let dates = [];
+      for (let i = 29; i >= 0; i--) {
+        let date = new Date();
+        date.setDate(date.getDate() - i);
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let dateString =
+          (month < 10 ? "0" : "") + month + "/" + (day < 10 ? "0" : "") + day;
+        dates.push(dateString);
+      }
+
+      let layout = {
+        title: "Изменение средней стоимости товаров у категории товаров",
+        xaxis: {
+          title: "Дата",
+          showgrid: false,
+          zeroline: false,
+        },
+        yaxis: {
+          title: "Средняя цена",
+          showline: false,
+        },
+      };
+
+      // USE EJS IN SCRIPT TAGS 0_0
+      let categoriesCount = "<%= it %>";
+      var xArray = dates;
+      let dataOBJ = JSON.parse("<%- arr %>");
+      let dataOBJ2 = JSON.parse("<%- arr2 %>");
+      let dataOBJ3 = JSON.parse("<%- arr3 %>");
+      let dataOBJ4 = JSON.parse("<%- arr4 %>");
+      let dataOBJ5 = JSON.parse("<%- arr5 %>");
+      let dataOBJ6 = JSON.parse("<%- arr6 %>");
+      let dataOBJ7 = JSON.parse("<%- arr7 %>");
+      let dataOBJ8 = JSON.parse("<%- arr8 %>");
+      let dataOBJ9 = JSON.parse("<%- arr9 %>");
+      let dataOBJ10 = JSON.parse("<%- arr10 %>");
+      let dataOBJ11 = JSON.parse("<%- arr11 %>");
+      let dataOBJ12 = JSON.parse("<%- arr12 %>");
+      let dataOBJ13 = JSON.parse("<%- arr13 %>");
+      let dataOBJ14 = JSON.parse("<%- arr14 %>");
+      let dataOBJ15 = JSON.parse("<%- arr15 %>");
+      let dataOBJ16 = JSON.parse("<%- arr16 %>");
+      let dataOBJ17 = JSON.parse("<%- arr17 %>");
+      let dataOBJ18 = JSON.parse("<%- arr18 %>");
+      let dataOBJ19 = JSON.parse("<%- arr19 %>");
+      let dataOBJ20 = JSON.parse("<%- arr20 %>");
+      let dataOBJ21 = JSON.parse("<%- arr21 %>");
+      let dataOBJ22 = JSON.parse("<%- arr22 %>");
+      let dataOBJ23 = JSON.parse("<%- arr23 %>");
+
+      let data = [];
+      for (let i = 0; i < categoriesCount; i++) {
+        let randdata = [];
+
+        let her = [];
+        if (i == 0) her = dataOBJ;
+        if (i == 1) her = dataOBJ2;
+        if (i == 2) her = dataOBJ3;
+        if (i == 3) her = dataOBJ4;
+        if (i == 4) her = dataOBJ5;
+        if (i == 5) her = dataOBJ6;
+        if (i == 6) her = dataOBJ7;
+        if (i == 7) her = dataOBJ8;
+        if (i == 8) her = dataOBJ9;
+        if (i == 9) her = dataOBJ10;
+        if (i == 10) her = dataOBJ11;
+        if (i == 11) her = dataOBJ12;
+        if (i == 12) her = dataOBJ13;
+        if (i == 13) her = dataOBJ14;
+        if (i == 14) her = dataOBJ15;
+        if (i == 15) her = dataOBJ16;
+        if (i == 16) her = dataOBJ17;
+        if (i == 17) her = dataOBJ18;
+        if (i == 18) her = dataOBJ19;
+        if (i == 19) her = dataOBJ20;
+        if (i == 20) her = dataOBJ21;
+        if (i == 21) her = dataOBJ22;
+        if (i == 22) her = dataOBJ23;
+
+        let trace = {
+          x: dates,
+          y: her,
+          mode: "lines+markers",
+          name: "Scatter",
+        };
+
+        data.push(trace);
+        Plotly.newPlot(`grafic${i + 1}`, data, layout);
+        data = [];
+      }
+    </script>
+
+    <script>
+      function myf() {
+        // Находим все элементы input с атрибутом name равным "format"
+        const formatInputs = document.querySelectorAll('input[name="format"]');
+        let selectedFormat = "";
+        // Проверяем, какой из input был выбран
+        formatInputs.forEach(function (input) {
+          if (input.checked) {
+            selectedFormat = input.value;
+          }
+        });
+        // console.log(selectedFormat); // Выводим выбранное значение в консоль
+
+        // let btn = document.getElementById("downloadBtn");
+        // btn.style.backgroundColor = "red";
+      }
+    </script>
+  </body>
+</html>

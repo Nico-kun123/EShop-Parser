@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!---------- Логотип в Header ---------->
+      <div class="header">
+        <a href="/" class="logo">
+          <img src="<%=data_4_render.website_logo%>" alt="ParSir's Logo" />
+        </a>
+      </div>
+      <!---------- Sticky Navbar ---------->
+      <nav id="navbar">
+        <a class="active" href="/home" lang="ru">Главная</a>
+        <a href="/about" lang="ru">О Сервисе</a>
+        <form
+          method="post"
+          action="/logout"
+          style="float: right; border-radius: 20px; text-align: center"
+        >
+          <input id="logout" type="submit" value="Выход" />
+        </form>
+      </nav>
+
+      <!---------- Основное поле ---------->
+      <h1 id="title" lang="ru">Как работать с сервисом?</h1>
+      <div class="main">
+        <div id="descr" style="text-align: start">
+          <p lang="ru"><%=data_4_render.home_ru[0]%></p>
+          <p lang="ru"><%=data_4_render.home_ru[1]%></p>
+        </div>
+      </div>
+
+      <div class="shops">
+        <h1 lang="ru"><%=data_4_render.about_ru[4]%></h1>
+        <div class="cards">
+          <img class="card" src="<%=data_4_render.ozon_logo%>" loading="lazy" />
+          <!-- <img class="card" src="<%=data_4_render.leroy_merlin_logo%>" loading="lazy" /> -->
+        </div>
+
+        <h3 lang="ru" style="border-top-style: double; border-top-width: 5px">
+          <%=data_4_render.home_ru[2]%>
+        </h3>
+
+        <form action="/parse" method="POST" style="text-align: start">
+          <label for="shop">Выберите интернет-магазин: </label>
+          <select
+            id="shop"
+            name="shop"
+            onchange="toggleCategory()"
+            style="text-align: center"
+          >
+            <option value="">(не выбран)</option>
+            <option value="Ozon">Ozon</option>
+            <!-- <option value="Leroy Merlin">Leroy Merlin</option> --></select
+          ><br />
+          <div id="ozon_categories" style="display: none">
+            <label for="ozon_category"
+              >Выберите категорию товаров на "Ozon":</label
+            >
+            <select
+              id="ozon_category"
+              name="ozon_category"
+              onchange="toggleCategorySmall()"
+            >
+              <option value="">(не выбрана)</option>
+              <option value="all">ВСЕ КАТЕГОРИИ</option>
+              <option value="Автотовары">Автотовары</option>
+              <option value="Антиквариат и коллекционирование">
+                Антиквариат и коллекционирование
+              </option>
+              <option value="Аптека">Аптека</option>
+              <option value="Бытовая техника">Бытовая техника</option>
+              <option value="Бытовая химия">Бытовая химия</option>
+              <option value="Все для игр">Все для игр</option>
+              <option value="Детские товары">Детские товары</option>
+              <option value="Дом и сад">Дом и сад</option>
+              <option value="Канцелярские товары">Канцелярские товары</option>
+              <option value="Книги">Книги</option>
+              <option value="Красота и здоровье">Красота и здоровье</option>
+              <option value="Мебель">Мебель</option>
+              <option value="Музыка и видео">Музыка и видео</option>
+              <option value="Одежда, обувь и аксессуары">
+                Одежда, обувь и аксессуары
+              </option>
+              <option value="Продукты питания">Продукты питания</option>
+              <option value="Спортивные товары">Спортивные товары</option>
+              <option value="Строительство и ремонт">
+                Строительство и ремонт
+              </option>
+              <option value="Товары для животных">Товары для животных</option>
+              <option value="Туризм, рыбалка, охота">
+                Туризм, рыбалка, охота
+              </option>
+              <option value="Хобби и творчество">Хобби и творчество</option>
+              <option value="Цифровые товары">Цифровые товары</option>
+              <option value="Электроника">Электроника</option>
+              <option value="Ювелирные украшения">
+                Ювелирные украшения
+              </option></select
+            ><br />
+          </div>
+          <div id="leroy_categories" style="display: none">
+            <label for="leroy_category"
+              >Выберите категорию товаров на "Leroy Merlin":</label
+            >
+            <select
+              id="leroy_category"
+              onchange="toggleCategorySmall()"
+              name="leroy_category"
+            >
+              <option value="">(не выбрана)</option>
+              <option value="all">ВСЕ КАТЕГОРИИ</option>
+              <option value="water">Водоснабжение</option>
+              <option value="decor">Декор</option>
+              <option value="tools">Инструменты</option>
+              <option value="paint">Краски</option>
+              <option value="kitch">Кухни</option>
+              <option value="cover">Напольные покрытия</option>
+              <option value="doors">Окна и двери</option>
+              <option value="light">Освещение</option>
+              <option value="tiles">Плитка</option>
+              <option value="garden">Сад</option>
+              <option value="sink">Сантехника</option>
+              <option value="bolts">Скобяные изделия</option>
+              <option value="tools">Столярные изделия</option>
+              <option value="materials">Стройматериалы</option>
+              <option value="storage">Хранение</option>
+              <option value="electro">Электротовары</option></select
+            ><br />
+          </div>
+          <button type="submit" id="choice" style="display: none">
+            Выбрать
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!---------- JavaScript Файлы ---------->
+    <%- include('../partials/footer'); %>
+    <script>
+      // Функция toggleCategory() получает значение выбранного магазина
+      //  из первого тега select и скрывает или отображает соответствующий
+      //   блок с выбором категорий товаров.
+      function toggleCategory() {
+        const shop = document.getElementById("shop").value;
+        const ozonCategories = document.getElementById("ozon_categories");
+        const leroyCategories = document.getElementById("leroy_categories");
+        const btn = document.getElementById("choice");
+
+        if (shop === "Ozon") {
+          ozonCategories.style.display = "block";
+          leroyCategories.style.display = "none";
+        } else if (shop === "Leroy Merlin") {
+          ozonCategories.style.display = "none";
+          leroyCategories.style.display = "block";
+        } else {
+          ozonCategories.style.display =
+            leroyCategories.style.display =
+            btn.style.display =
+              "none";
+        }
+      }
+
+      function toggleCategorySmall() {
+        const submitButton = document.getElementById("choice");
+        const category =
+          document.getElementById("ozon_category").value ||
+          document.getElementById("leroy_category").value;
+
+        if (category) submitButton.style.display = "block";
+        else submitButton.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

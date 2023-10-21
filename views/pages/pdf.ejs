@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html style="background: white">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <a href="/" class="logo">
+          <img src="<%=data_4_render.website_logo%>" alt="ParSir's Logo" />
+        </a>
+      </div>
+      <h1 id="title" style="font-size: xx-small">
+        Собранные Данные (Всего записей: <%= len %>)
+      </h1>
+      <h3 style="text-align: center; line-height: 1; font-size: xx-small">
+        Чтобы сохранить данные в формате ".pdf", используйте сочетание клавиш
+        "ctrl + P"
+      </h3>
+      <div class="main" style="background: white; padding: 0; margin: 0">
+        <div
+          id="descr"
+          style="text-align: start; font-size: xx-small; line-height: 1.2"
+        >
+          <% for (let el in prod) { %>
+
+          <p><b>НАЗВАНИЕ ТОВАРА: </b><%= prod[el].product_name %></p>
+          <p><b>ИНТЕРНЕТ-МАГАЗИН: </b><%= prod[el].shop %></p>
+          <p><b>КАТЕГОРИЯ ТОВАРА: </b><%= prod[el].product_category %></p>
+          <p><b>СТОИМОСТЬ: </b><%= prod[el].product_cost %></p>
+          <p><b>ДАТА СБОРА ДАННЫХ: </b><%= prod[el].parse_date %></p>
+          <br />
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <a id="back2Top" title="Наверх" href="#">&#10148;</a>
+  </body>
+</html>

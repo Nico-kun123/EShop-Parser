@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:15.2
+    restart: "always"
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./db/postgresql_data:/var/lib/postgresql/data"
+    env_file:
+      - .env
+  pgadmin:
+    image: dpage/pgadmin4:6.21
+    restart: "always"
+    volumes:
+      - "./db/pgadmin_data:/var/lib/pgadmin"
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    depends_on:
+      - postgres

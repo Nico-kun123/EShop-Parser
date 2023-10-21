@@ -1,0 +1,432 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+*,
+*::before,
+*::after {
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f6f5f7;
+  aspect-ratio: 16/9;
+  min-height: 100%;
+  margin-bottom: 0px;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  margin: -56px 0 0 -56px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgb(32, 72, 250);
+  border-bottom: 16px solid rgb(60, 216, 255);
+  border-left: 16px solid #c4c4c4;
+  border-right: 16px solid #c4c4c4;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+#main_wrap {
+  display: none;
+  text-align: center;
+}
+
+.load-wrapper {
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#7F53AC), to(#647DEE));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#7032ad), to(#3858eb));
+}
+
+.header {
+  background-color: #ffffff;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s ease-in-out;
+}
+.header .logo img {
+  aspect-ratio: 3/2;
+  width: 250px;
+  height: 100px;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+  width: 100%;
+  z-index: 10;
+  transition: 0.5s ease-in-out;
+}
+#navbar a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+  font-size: 17px;
+}
+#navbar a:hover {
+  background-color: rgb(60, 216, 255);
+  color: black;
+  font-weight: bold;
+  transition: 0.5s ease-in-out;
+}
+#navbar a.active {
+  background-color: rgb(32, 72, 250);
+  color: white;
+  font-weight: bold;
+}
+#navbar #logout {
+  cursor: pointer;
+  margin: auto;
+  margin-top: 12px;
+  margin-right: 10px;
+  background-color: rgb(32, 72, 250);
+  color: rgb(255, 255, 255);
+  font-size: 12pt;
+  font-family: "Open Sans", sans-serif;
+}
+#navbar #logout:hover {
+  background-color: rgb(60, 216, 255);
+  color: rgb(0, 0, 0);
+}
+#navbar #translate_button {
+  margin: 5px 5px 5px 5px;
+  width: auto;
+  padding: 10px 10px;
+  float: right;
+  border-radius: 20px;
+  text-align: center;
+}
+#navbar #translate_button label,
+#navbar #translate_button img {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: x-small;
+}
+#navbar #translate_button:hover {
+  cursor: pointer;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .main {
+  padding-top: 60px;
+}
+
+#title {
+  margin: auto;
+  width: 100%;
+  padding: 5px;
+  text-align: center; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e2e2e2, rgb(239, 243, 253));
+  border-bottom-style: double;
+  border-bottom-width: 5px;
+  border-top-style: double;
+  border-top-width: 5px;
+  transition: 0.5s ease-in-out;
+}
+
+.main {
+  margin: auto;
+  width: 100%; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e2e2e2, rgb(239, 243, 253));
+  border-width: 2px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-style: dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: 0.5s ease-in-out;
+}
+.main #descr {
+  text-indent: 20pt;
+  margin: 15px;
+}
+
+.shops {
+  margin-top: 1em;
+  box-shadow: 2px 2px 2px 1px #03001e;
+  border-width: 2px;
+  padding: 5px;
+  margin: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-bottom: auto;
+  transition: 0.5s ease-in-out;
+}
+.shops .cards {
+  margin: 5px;
+  padding: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+.shops .cards .card {
+  width: 50px;
+  flex-basis: 33.33333%;
+  padding: 5px;
+  align-self: center;
+  aspect-ratio: 3/2;
+}
+.shops h1 {
+  text-align: center;
+}
+.shops h3 {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  border-bottom-style: double;
+  border-bottom-width: 5px;
+}
+.shops label {
+  font-size: larger;
+  font-weight: bold;
+}
+.shops button {
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background: rgb(32, 72, 250);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 30px;
+  margin: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  transition: 0.5s ease-in-out;
+}
+.shops button:hover {
+  background: rgb(60, 216, 255);
+  color: #000000;
+}
+.shops form {
+  margin: 10px;
+}
+
+.card :hover {
+  filter: none;
+}
+
+.parsed_data_field {
+  margin-bottom: 50px;
+}
+
+.category {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  text-align: center; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e2e2e2, rgb(239, 243, 253));
+  border-bottom-style: double;
+  border-bottom-width: 5px;
+  border-top-style: double;
+  border-top-width: 5px;
+}
+.category h3 {
+  text-align: center;
+  width: 80%;
+}
+.category button {
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background: rgb(32, 72, 250);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
+  margin: 0;
+  margin-top: -10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  transition: 0.5s ease-in-out;
+}
+.category button:hover {
+  background: rgb(60, 216, 255);
+  color: #000000;
+}
+
+/* ~~~~~ Кнопка, которая прокручивает страницу наверх ~~~~~~~~~~~~~~~~ */
+#back2Top {
+  width: 50px;
+  height: 50px;
+  line-height: 52px;
+  overflow: hidden;
+  z-index: auto;
+  display: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: rgb(32, 72, 250);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: x-large;
+  text-decoration: none;
+  padding: 0;
+}
+
+#back2Top:hover {
+  background-color: rgb(60, 216, 255);
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  bottom: 52px;
+}
+
+@media (min-width: 320px) {
+  .header .logo img {
+    aspect-ratio: 3/2;
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+  }
+  #navbar #translate_button {
+    margin: 8px 5px 5px 5px;
+    padding: 5px 5px;
+    font-size: small;
+  }
+  #navbar a {
+    font-size: small;
+  }
+  #title {
+    font-size: medium;
+  }
+  .main {
+    padding: 5px;
+  }
+  .shops h1 {
+    font-size: medium;
+  }
+  .shops .cards .card {
+    max-width: 120px;
+  }
+}
+@media (min-width: 990px) {
+  .header .logo img {
+    aspect-ratio: 3/2;
+    width: 200px;
+    height: 50px;
+  }
+  #navbar #translate_button {
+    margin: 8px 5px 5px 5px;
+    padding: 5px 5px;
+    font-size: small;
+  }
+  #navbar a {
+    font-size: small;
+  }
+  #title {
+    font-size: x-large;
+  }
+  .main p,
+  .main li {
+    font-size: larger;
+  }
+  p {
+    font-size: large;
+  }
+  .shops h1 {
+    font-size: x-large;
+  }
+  .shops .cards .card {
+    max-width: 150px;
+  }
+}
+@media (min-width: 1400px) {
+  .header .logo img {
+    aspect-ratio: 3/2;
+    width: 300px;
+    height: 50px;
+  }
+  #navbar #translate_button {
+    margin: 8px 5px 5px 5px;
+    padding: 5px 5px;
+    font-size: small;
+  }
+  #navbar a {
+    font-size: small;
+  }
+  .shops .cards .card {
+    max-width: 200px;
+  }
+}/*# sourceMappingURL=Styles.css.map */

@@ -1,0 +1,40 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "тестирование шаблона для диплома",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel app.js",
+    "start": "npm run build && nodemon -r dotenv/config app.js",
+    "parser": "node ./werk/parser.js"
+  },
+  "author": "LaycoNi",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "fast-xml-parser": "^4.2.3",
+    "http-status": "^1.6.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.10.0",
+    "plotly.js-dist": "^2.22.0",
+    "puppeteer": "^19.11.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "user-agents": "^1.0.1376"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "jsdoc": "^4.0.2",
+    "nodemon": "^2.0.20"
+  }
+}

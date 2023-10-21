@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <style>
+    body {
+      background: #f6f5f7;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      aspect-ratio: 16/9;
+      overflow: hidden; /* Hide scrollbars */
+    }
+
+    h1 {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 20px;
+      letter-spacing: 0.5px;
+      margin: 20px 0 30px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+
+    a {
+      color: #333;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 15px 0;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2),
+        0 10px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 25%;
+      overflow: hidden;
+      width: 900px;
+      max-width: 100%;
+      min-height: 480px;
+    }
+
+    .form-container form {
+      background: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding: 0 50px;
+      height: 100%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .form-container input {
+      background: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    button {
+      border-radius: 20px;
+      border: 1px solid #2bdcff;
+      background: #2b83ff;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      -webkit-transition: -webkit-transform 80ms ease-in;
+      transition: -webkit-transform 80ms ease-in;
+      -o-transition: transform 80ms ease-in;
+      transition: transform 80ms ease-in;
+      transition: transform 80ms ease-in, -webkit-transform 80ms ease-in;
+    }
+
+    button:active {
+      -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+      transform: scale(0.95);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button.ghost {
+      background: transparent;
+      border-color: #fff;
+    }
+
+    .form-container {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      -webkit-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .sign-in-container {
+      left: 0;
+      width: 50%;
+      z-index: 2;
+    }
+
+    .sign-up-container {
+      left: 0;
+      width: 50%;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .overlay-container {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      -webkit-transition: -webkit-transform 0.6s ease-in-out;
+      transition: -webkit-transform 0.6s ease-in-out;
+      -o-transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+      z-index: 100;
+    }
+
+    .overlay {
+      background: #2b83ff;
+      background: -webkit-gradient(
+          linear,
+          left top,
+          right top,
+          from(#2bc3ff),
+          to(#2b83ff)
+        )
+        no-repeat 0 0 / cover;
+      background: -o-linear-gradient(left, #2bc3ff, #2b83ff) no-repeat 0 0 /
+        cover;
+      background: linear-gradient(to right, #2bc3ff, #2b83ff) no-repeat 0 0 /
+        cover;
+      color: #fff;
+      position: relative;
+      left: -100%;
+      height: 100%;
+      width: 200%;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+      -webkit-transition: -webkit-transform 0.6s ease-in-out;
+      transition: -webkit-transform 0.6s ease-in-out;
+      -o-transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+    }
+
+    .overlay-panel {
+      position: absolute;
+      top: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 0 40px;
+      height: 100%;
+      width: 50%;
+      text-align: center;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+      -webkit-transition: -webkit-transform 0.6s ease-in-out;
+      transition: -webkit-transform 0.6s ease-in-out;
+      -o-transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out;
+      transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+    }
+
+    .overlay-right {
+      right: 0;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .overlay-left {
+      -webkit-transform: translateY(-20%);
+      -ms-transform: translateY(-20%);
+      transform: translateY(-20%);
+    }
+
+    /* Move signin to right */
+    .container.right-panel-active .sign-in-container {
+      -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+      transform: translateY(100%);
+    }
+
+    /* Move overlay to left */
+    .container.right-panel-active .overlay-container {
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+
+    /* Bring signup over signin */
+    .container.right-panel-active .sign-up-container {
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 5;
+    }
+
+    /* Move overlay back to right */
+    .container.right-panel-active .overlay {
+      -webkit-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+      transform: translateX(50%);
+    }
+
+    /* Bring back the text to center */
+    .container.right-panel-active .overlay-left {
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    /* Same effect for right */
+    .container.right-panel-active .overlay-right {
+      -webkit-transform: translateY(20%);
+      -ms-transform: translateY(20%);
+      transform: translateY(20%);
+    }
+
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .icons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: 30px;
+      height: 30px;
+      letter-spacing: 15px;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    /* --[ Адаптивность. Для смартфонов ]-------------------------- */
+    @media (min-width: 320px) {
+      .container {
+        top: 15%;
+      }
+    }
+    /* --[ Адаптивность. Для планшетов ]--------------------------- */
+    @media (min-width: 990px) {
+      .container {
+        top: 15%;
+      }
+    }
+    /* --[ Адаптивность. Для ноутбуков и ПК ]---------------------- */
+    @media (min-width: 1400px) {
+      .container {
+        top: 25%;
+      }
+    }
+  </style>
+  <body>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form action="/registration" method="POST">
+          <h1>Регистрация</h1>
+          <br />
+          <% if(data_4_render.correct){ %>
+          <h5 style="color: limegreen"><%= data_4_render.message %></h5>
+          <% } else{ %>
+          <h5 style="color: crimson"><%= data_4_render.message %></h5>
+          <% } %>
+          <input
+            type="email"
+            placeholder="Email"
+            id="reg_email"
+            name="email_new"
+            value="<%= data_4_render.emailReg %>"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="reg_password"
+            name="password_new"
+            value="<%= data_4_render.passwordReg %>"
+            required
+          />
+          <br />
+          <button type="submit">Создать аккаунт</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="/login" method="POST">
+          <h1>Войдите в систему</h1>
+          <br />
+
+          <% if(data_4_render.correct){ %>
+          <h5 style="color: limegreen"><%= data_4_render.message %></h5>
+          <% } else{ %>
+          <h5 style="color: crimson"><%= data_4_render.message %></h5>
+          <% } %>
+
+          <input
+            type="email"
+            placeholder="Email"
+            id="login_email"
+            name="email"
+            value="<%= data_4_render.emailAuth %>"
+            required
+            autofocus
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="login_password"
+            name="password"
+            value="<%= data_4_render.passwordAuth %>"
+            required
+          />
+          <br />
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Добро пожаловать!</h1>
+            <p>
+              Для регистрации введите свои электронную почту и придуманный вами
+              пароль
+            </p>
+            <button class="ghost" id="signIn">У меня уже есть аккаунт</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>С возвращением!</h1>
+            <p>Если хотите создать новый аккаунт, нажмите на кнопку ниже</p>
+            <button class="ghost" id="signUp">Создать аккаунт</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const signUpButton = document.getElementById("signUp");
+      const signInButton = document.getElementById("signIn");
+      const container = document.getElementById("container");
+
+      signUpButton.addEventListener("click", () =>
+        container.classList.add("right-panel-active")
+      );
+
+      signInButton.addEventListener("click", () =>
+        container.classList.remove("right-panel-active")
+      );
+    </script>
+  </body>
+</html>

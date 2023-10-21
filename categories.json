@@ -1,0 +1,240 @@
+{
+  "Ozon": [
+    [
+      {
+        "category": "Красота и здоровье",
+        "url": "https://www.ozon.ru/category/krasota-i-zdorove-6500/"
+      }
+    ],
+    [
+      {
+        "category": "Книги",
+        "url": "https://www.ozon.ru/category/knigi-16500/"
+      }
+    ],
+    [
+      {
+        "category": "Строительство и ремонт",
+        "url": "https://www.ozon.ru/category/stroitelstvo-i-remont-9700/"
+      }
+    ],
+    [
+      {
+        "category": "Спортивные товары",
+        "url": "https://www.ozon.ru/category/sport-i-otdyh-11000/"
+      }
+    ],
+    [
+      {
+        "category": "Товары для животных",
+        "url": "https://www.ozon.ru/category/tovary-dlya-zhivotnyh-12300/"
+      }
+    ],
+    [
+      {
+        "category": "Продукты питания",
+        "url": "https://www.ozon.ru/category/produkty-pitaniya-9200/"
+      }
+    ],
+    [
+      {
+        "category": "Автотовары",
+        "url": "https://www.ozon.ru/category/avtotovary-8500/"
+      }
+    ],
+    [
+      {
+        "category": "Туризм, рыбалка, охота",
+        "url": "https://www.ozon.ru/category/ohota-rybalka-turizm-33332/"
+      }
+    ],
+    [
+      {
+        "category": "Все для игр",
+        "url": "https://www.ozon.ru/category/igry-i-soft-13300/"
+      }
+    ],
+    [
+      {
+        "category": "Мебель",
+        "url": "https://www.ozon.ru/category/mebel-15000/"
+      }
+    ],
+    [
+      {
+        "category": "Бытовая химия",
+        "url": "https://www.ozon.ru/category/bytovaya-himiya-14572/"
+      }
+    ],
+    [
+      {
+        "category": "Ювелирные украшения",
+        "url": "https://www.ozon.ru/category/yuvelirnye-ukrasheniya-50001/"
+      }
+    ],
+    [
+      {
+        "category": "Антиквариат и коллекционирование",
+        "url": "https://www.ozon.ru/category/antikvariat-vintazh-iskusstvo-8000/"
+      }
+    ],
+    [
+      {
+        "category": "Канцелярские товары",
+        "url": "https://www.ozon.ru/category/kantselyarskie-tovary-18000/"
+      }
+    ],
+    [
+      {
+        "category": "Хобби и творчество",
+        "url": "https://www.ozon.ru/category/hobbi-i-tvorchestvo-13500/"
+      }
+    ],
+    [
+      {
+        "category": "Музыка и видео",
+        "url": "https://www.ozon.ru/category/muzyka-i-video-13100/"
+      }
+    ],
+    [
+      {
+        "category": "Цифровые товары",
+        "url": "https://www.ozon.ru/category/tsifrovye-tovary-32056/"
+      }
+    ],
+    [
+      {
+        "category": "Аптека",
+        "url": "https://www.ozon.ru/category/apteka-6000/"
+      }
+    ],
+    [
+      {
+        "category": "Детские товары",
+        "url": "https://www.ozon.ru/category/detskie-tovary-7000/"
+      }
+    ],
+    [
+      {
+        "category": "Одежда, обувь и аксессуары",
+        "url": "https://www.ozon.ru/category/odezhda-obuv-i-aksessuary-7500/"
+      }
+    ],
+    [
+      {
+        "category": "Бытовая техника",
+        "url": "https://www.ozon.ru/category/bytovaya-tehnika-10500/"
+      }
+    ],
+    [
+      {
+        "category": "Дом и сад",
+        "url": "https://www.ozon.ru/category/dom-i-sad-14500/"
+      }
+    ],
+    [
+      {
+        "category": "Электроника",
+        "url": "https://www.ozon.ru/category/elektronika-15500/"
+      }
+    ]
+  ],
+  "Leroy": [
+    [
+      {
+        "category": "Краски",
+        "url": "https://leroymerlin.ru/catalogue/kraski/"
+      }
+    ],
+    [
+      {
+        "category": "Стройматериалы",
+        "url": "https://leroymerlin.ru/catalogue/stroymaterialy/"
+      }
+    ],
+    [
+      {
+        "category": "Сад",
+        "url": "https://leroymerlin.ru/catalogue/sad/"
+      }
+    ],
+    [
+      {
+        "category": "Столярные изделия",
+        "url": "https://leroymerlin.ru/catalogue/stolyarnye-izdeliya/"
+      }
+    ],
+    [
+      {
+        "category": "Окна и двери",
+        "url": "https://leroymerlin.ru/catalogue/okna-i-dveri/"
+      }
+    ],
+    [
+      {
+        "category": "Водоснабжение",
+        "url": "https://leroymerlin.ru/catalogue/vodosnabzhenie/"
+      }
+    ],
+    [
+      {
+        "category": "Плитка",
+        "url": "https://leroymerlin.ru/catalogue/plitka/"
+      }
+    ],
+    [
+      {
+        "category": "Электротовары",
+        "url": "https://leroymerlin.ru/catalogue/elektrotovary/"
+      }
+    ],
+    [
+      {
+        "category": "Сантехника",
+        "url": "https://leroymerlin.ru/catalogue/santehnika/"
+      }
+    ],
+    [
+      {
+        "category": "Напольные покрытия",
+        "url": "https://leroymerlin.ru/catalogue/napolnye-pokrytiya/"
+      }
+    ],
+    [
+      {
+        "category": "Инструменты",
+        "url": "https://leroymerlin.ru/catalogue/instrumenty/"
+      }
+    ],
+    [
+      {
+        "category": "Скобяные изделия",
+        "url": "https://leroymerlin.ru/catalogue/skobyanye-izdeliya/"
+      }
+    ],
+    [
+      {
+        "category": "Декор",
+        "url": "https://leroymerlin.ru/catalogue/dekor/"
+      }
+    ],
+    [
+      {
+        "category": "Кухни",
+        "url": "https://leroymerlin.ru/catalogue/kuhni/"
+      }
+    ],
+    [
+      {
+        "category": "Освещение",
+        "url": "https://leroymerlin.ru/catalogue/osveshchenie/"
+      }
+    ],
+    [
+      {
+        "category": "Хранение",
+        "url": "https://leroymerlin.ru/catalogue/hranenie/"
+      }
+    ]
+  ]
+}

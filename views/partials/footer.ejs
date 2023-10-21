@@ -1,0 +1,202 @@
+<style>
+  #footer-distributed {
+    background: #444;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30px;
+    overflow: hidden;
+  }
+
+  section {
+    width: 100%;
+    display: inline-block;
+    background: #ccc;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* Footer left */
+  #footer-distributed .footer-left {
+    float: left;
+  }
+
+  /* Footer links */
+  #footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 0 0 10px;
+    padding: 0;
+  }
+
+  #footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #footer-distributed .footer-links :hover {
+    color: rgb(60, 216, 255);
+    -webkit-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  #footer-distributed .footer-company-name {
+    color: #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  /* Footer social icons */
+  #footer-distributed .footer-icons {
+    margin-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: auto;
+    gap: 10px;
+  }
+
+  #footer-distributed .footer-icons img {
+    -webkit-filter: invert();
+    filter: invert();
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  #footer-distributed .footer-icons a {
+    padding: auto;
+    width: 35px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+  }
+
+  #footer-distributed .footer-icons a:hover {
+    -webkit-filter: invert();
+    filter: invert();
+    -webkit-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  #footer-distributed ::-webkit-input-placeholder {
+    color: #5c666b;
+  }
+
+  #footer-distributed ::-moz-placeholder {
+    color: #5c666b;
+    opacity: 1;
+  }
+
+  #footer-distributed :-ms-input-placeholder {
+    color: #5c666b;
+  }
+
+  /* --[ Адаптивность. Для смартфонов ]------ */
+  @media (min-width: 320px) {
+    #footer-distributed img {
+      width: 150px;
+    }
+
+    #footer-distributed .footer-left {
+      margin: 0 auto;
+    }
+
+    #footer-distributed .footer-left {
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      margin: auto;
+      text-align: center;
+      width: 100%;
+      aspect-ratio: 3/2;
+      width: 250px;
+      height: 100px;
+    }
+  }
+
+  /* --[ Адаптивность. Для планшетов ]--------- */
+  @media (min-width: 990px) {
+    #footer-distributed {
+      font: 14px;
+    }
+
+    #footer-distributed .footer-company-name {
+      font-size: 12px;
+    }
+  }
+
+  /* --[ Адаптивность. Для ноутбуков и ПК ]------- */
+  @media (min-width: 1400px) {
+    #footer-distributed img {
+      width: 250px;
+    }
+  }
+</style>
+
+<footer id="footer-distributed" style="text-align: start">
+  <div class="footer-left">
+    <img class="logo" src="/img/Logo/ParSir Logo.svg" alt="ParSir's Logo" />
+
+    <p class="footer-links" lang="ru">
+      <a href="/">Главная</a>
+      ·
+      <a href="/about">О Сервисе</a>
+    </p>
+    <p class="footer-company-name">ParSir © 2023</p>
+
+    <div class="footer-icons">
+      <a href="https://vk.com/layconi" target="_blank">
+        <img src="/img/Logo/Vk.svg" alt="VK Logo" />
+      </a>
+
+      <a href="https://t.me/LaycoNicolay" target="_blank">
+        <img src="/img/Logo/Telegram.svg" alt="Telegram Logo" />
+      </a>
+
+      <a
+        href="https://www.youtube.com/@layconicolay3317/featured"
+        target="_blank"
+      >
+        <img src="/img/Logo/Youtube.svg" alt="YouTube Logo" />
+      </a>
+
+      <a href="https://github.com/Nico-kun123?tab=repositories" target="_blank">
+        <img src="/img/Logo/GitHub.svg" alt="GitHub Logo" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script
+  type="text/javascript"
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+></script>
+<script type="text/javascript">
+  function loader() {
+    let timer = setTimeout(showPage, 1000);
+  }
+
+  function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("main_wrap").style.display = "inline";
+  }
+</script>
+<script type="text/javascript" src="/extra.js"></script>

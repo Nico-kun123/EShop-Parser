@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!---------- Логотип в Header ---------->
+      <div class="header">
+        <a href="/" class="logo">
+          <img src="<%=data_4_render.website_logo%>" alt="ParSir's Logo" />
+        </a>
+      </div>
+      <!---------- Sticky Navbar ---------->
+      <nav id="navbar">
+        <a href="/home" lang="ru">Главная</a>
+        <a class="active" href="/about" lang="ru">О Сервисе</a>
+        <form
+          method="post"
+          action="/logout"
+          style="float: right; border-radius: 20px; text-align: center"
+        >
+          <input id="logout" type="submit" value="Выход" />
+        </form>
+      </nav>
+
+      <!---------- Основное поле ---------->
+      <h1 id="title" lang="ru">Что делает данный сервис?</h1>
+      <div class="main">
+        <div id="descr">
+          <p lang="ru"><%=data_4_render.about_ru[0]%></p>
+          <p lang="ru"><%=data_4_render.about_ru[1]%></p>
+          <p lang="ru"><%=data_4_render.about_ru[2]%></p>
+          <ul lang="ru">
+            <% for (let i = 0; i <= 2; i++ ) { %>
+            <li lang="ru"><%=data_4_render.about_ru[3][i]%></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <div class="shops">
+        <h1 lang="ru"><%=data_4_render.about_ru[4]%></h1>
+        <div class="cards">
+          <img class="card" src="<%=data_4_render.ozon_logo%>" loading="lazy" />
+          <!-- <img class="card" src="<%=data_4_render.leroy_merlin_logo%>" loading="lazy"/> -->
+        </div>
+      </div>
+    </div>
+    <!---------- JavaScript Файлы ---------->
+    <%- include('../partials/footer'); %>
+  </body>
+</html>

@@ -1,0 +1,617 @@
+//-[Sass Переменные]---------------------------------------------------------------
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+$font-family: "Open Sans", sans-serif;
+$font-weight-nav: bold;
+
+$html-background-webkit-linear-gradient: -webkit-linear-gradient(
+  to right,
+  #e2e2e2,
+  rgb(239, 243, 253)
+);
+$html-background-linear-gradient: linear-gradient(
+  to right,
+  #e2e2e2,
+  rgb(239, 243, 253)
+);
+$nav-webkit-linear-gradient: -webkit-linear-gradient(
+  to right,
+  #fdeff9,
+  #ec38bc,
+  #7303c0,
+  #03001e
+);
+$nav-linear-gradient: linear-gradient(
+  to right,
+  #fdeff9,
+  #ec38bc,
+  #7303c0,
+  #03001e
+);
+
+$main-padding: 5px;
+$background: #f6f5f7;
+$body-background-color: #333;
+
+$ui-color-blue: rgb(32, 72, 250);
+$ui-color-cyan: rgb(60, 216, 255);
+
+//-[Website Styles]---------------------------------------------------------------
+*,
+*::before,
+*::after {
+  font-family: $font-family;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $body-background-color;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: $background;
+  aspect-ratio: 16/9;
+  min-height: 100%;
+  margin-bottom: 0px;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+//-[Loader]------------------------------------------------------------------
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  margin: -56px 0 0 -56px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid $ui-color-blue;
+  border-bottom: 16px solid $ui-color-cyan;
+  border-left: 16px solid #c4c4c4;
+  border-right: 16px solid #c4c4c4;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+#main_wrap {
+  display: none;
+  text-align: center;
+}
+
+.load-wrapper {
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+  position: relative;
+}
+
+//-[Scrollbar]---------------------------------------------------------------
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+// prettier-ignore
+::-webkit-scrollbar-thumb { 
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: -webkit-gradient( linear, 40% 0%, 75% 84%, from(#7F53AC), to(#647DEE) );
+}
+
+// prettier-ignore
+::-webkit-scrollbar-thumb:hover {
+  background-image: -webkit-gradient( linear, 40% 0%, 75% 84%, from(#7032ad), to(#3858eb) );
+}
+
+//-[Header]---------------------------------------------------------------
+.header {
+  background-color: #ffffff;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+
+  .logo {
+    img {
+      aspect-ratio: 3/2;
+      width: 250px;
+      height: 100px;
+    }
+  }
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+  width: 100%;
+  z-index: 10;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+
+  a {
+    float: left;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  a:hover {
+    background-color: $ui-color-cyan;
+    color: black;
+    font-weight: $font-weight-nav;
+
+    -webkit-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  a.active {
+    background-color: $ui-color-blue;
+    color: white;
+    font-weight: $font-weight-nav;
+  }
+
+  #logout {
+    cursor: pointer;
+    margin: auto;
+    margin-top: 12px;
+    margin-right: 10px;
+    background-color: rgb(32, 72, 250);
+    color: rgb(255, 255, 255);
+    font-size: 12pt;
+    font-family: $font-family;
+  }
+  #logout:hover {
+    background-color: rgb(60, 216, 255);
+    color: rgb(0, 0, 0);
+  }
+
+  #translate_button {
+    margin: $main-padding $main-padding $main-padding $main-padding;
+    width: auto;
+    padding: 10px 10px;
+    float: right;
+    border-radius: 20px;
+    text-align: center;
+
+    label,
+    img {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: x-small;
+    }
+  }
+
+  #translate_button:hover {
+    cursor: pointer;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .main {
+  padding-top: 60px;
+}
+
+//-[Title + Description. FOR GENERAL USAGE]-------------------------------------------------
+#title {
+  margin: auto;
+  width: 100%;
+  padding: $main-padding;
+  text-align: center;
+  background: $html-background-webkit-linear-gradient; /* Chrome 10-25, Safari 5.1-6 */
+  background: $html-background-linear-gradient;
+  border-bottom-style: double;
+  border-bottom-width: 5px;
+  border-top-style: double;
+  border-top-width: 5px;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.main {
+  margin: auto;
+  width: 100%;
+  background: $html-background-webkit-linear-gradient; /* Chrome 10-25, Safari 5.1-6 */
+  background: $html-background-linear-gradient;
+
+  border-width: 2px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-style: dashed;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+
+  #descr {
+    text-indent: 20pt;
+    margin: 15px;
+  }
+}
+
+//-[About. Shops]---------------------------------------------------------------
+.shops {
+  margin-top: 1em;
+  -webkit-box-shadow: 2px 2px 2px 1px #03001e;
+  box-shadow: 2px 2px 2px 1px #03001e;
+  border-width: 2px;
+  padding: $main-padding;
+  margin: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-right: 0;
+  margin-bottom: auto;
+
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+
+  .cards {
+    margin: 5px;
+    padding: auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+
+    .card {
+      width: 50px;
+      -ms-flex-preferred-size: 33.33333%;
+      flex-basis: 33.33333%;
+      padding: $main-padding;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+      aspect-ratio: 3/2;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h3 {
+    width: 100%;
+    padding: $main-padding;
+    text-align: center;
+    border-bottom-style: double;
+    border-bottom-width: 5px;
+  }
+
+  label {
+    font-size: larger;
+    font-weight: bold;
+  }
+
+  button {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background: $ui-color-blue;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 30px;
+    margin: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    &:hover {
+      background: $ui-color-cyan;
+      color: #000000;
+    }
+
+    -webkit-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+  form {
+    margin: 10px;
+  }
+}
+
+.card :hover {
+  -webkit-filter: none;
+  filter: none;
+}
+
+//-[Parse. Categories]---------------------------------------------------------------
+.parsed_data_field {
+  margin-bottom: 50px;
+}
+
+.category {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding: $main-padding;
+  text-align: center;
+  background: $html-background-webkit-linear-gradient; /* Chrome 10-25, Safari 5.1-6 */
+  background: $html-background-linear-gradient;
+  border-bottom-style: double;
+  border-bottom-width: 5px;
+  border-top-style: double;
+  border-top-width: 5px;
+  h3 {
+    text-align: center;
+    width: 80%;
+  }
+  button {
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background: $ui-color-blue;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    margin: 0;
+    margin-top: -10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+    -webkit-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      background: $ui-color-cyan;
+      color: #000000;
+    }
+  }
+}
+/* ~~~~~ Кнопка, которая прокручивает страницу наверх ~~~~~~~~~~~~~~~~ */
+#back2Top {
+  width: 50px;
+  height: 50px;
+  line-height: 52px;
+  overflow: hidden;
+  z-index: auto;
+  display: none;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: $ui-color-blue;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: x-large;
+  text-decoration: none;
+  padding: 0;
+}
+#back2Top:hover {
+  background-color: $ui-color-cyan;
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  bottom: 52px;
+}
+//--[ Адаптивность. Для смартфонов ]-------------------------------------------------------
+@media (min-width: 320px) {
+  .header {
+    .logo {
+      img {
+        aspect-ratio: 3/2;
+        padding: $main-padding;
+        width: 200px;
+        height: 40px;
+      }
+    }
+  }
+
+  #navbar {
+    #translate_button {
+      margin: 8px 5px 5px 5px;
+      padding: $main-padding $main-padding;
+      font-size: small;
+    }
+    a {
+      font-size: small;
+    }
+  }
+
+  #title {
+    font-size: medium;
+  }
+
+  .main {
+    padding: $main-padding;
+  }
+
+  .shops {
+    h1 {
+      font-size: medium;
+    }
+    .cards {
+      .card {
+        max-width: 120px;
+      }
+    }
+  }
+}
+//--[ Адаптивность. Для планшетов ]-------------------------------------------------------
+@media (min-width: 990px) {
+  .header {
+    .logo {
+      img {
+        aspect-ratio: 3/2;
+        width: 200px;
+        height: 50px;
+      }
+    }
+  }
+
+  #navbar {
+    #translate_button {
+      margin: 8px 5px 5px 5px;
+      padding: $main-padding $main-padding;
+      font-size: small;
+    }
+    a {
+      font-size: small;
+    }
+  }
+
+  #title {
+    font-size: x-large;
+  }
+
+  .main {
+    p,
+    li {
+      font-size: larger;
+    }
+  }
+  p {
+    font-size: large;
+  }
+  .shops {
+    h1 {
+      font-size: x-large;
+    }
+    .cards {
+      .card {
+        max-width: 150px;
+      }
+    }
+  }
+}
+//--[ Адаптивность. Для ноутбуков и ПК ]--------------------------------------------------
+@media (min-width: 1400px) {
+  .header {
+    .logo {
+      img {
+        aspect-ratio: 3/2;
+        width: 300px;
+        height: 50px;
+      }
+    }
+  }
+  #navbar {
+    #translate_button {
+      margin: 8px 5px 5px 5px;
+      padding: $main-padding $main-padding;
+      font-size: small;
+    }
+    a {
+      font-size: small;
+    }
+  }
+  .shops {
+    .cards {
+      .card {
+        max-width: 200px;
+      }
+    }
+  }
+}
